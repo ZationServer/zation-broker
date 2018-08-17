@@ -1,0 +1,38 @@
+{
+  "name": "zation-cluster-broker",
+  "version": "6.0.0",
+  "license": "MIT",
+  "description": "Zation broker server for horizontal scalability.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZationServer/zation-cluster-broker.git"
+  },
+  "author": {
+    "name": "Luca Scarignella",
+    "email": "lucacode1@gmail.com",
+    "url": "https://luca.scaringella.de"
+  },
+  "keywords": [
+    "cluster",
+    "state",
+    "esay",
+    "engine",
+    "server",
+    "realtime",
+    "scalable",
+    "secure",
+    "horizontal",
+    "scalability"
+  ],
+  "dependencies": {
+    "express": "4.16.3",
+    "minimist": "1.2.0",
+    "sc-framework-health-check": "^2.0.0",
+    "socketcluster": "14.0.5",
+    "socketcluster-client": "14.0.0"
+  }
+}
