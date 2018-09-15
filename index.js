@@ -13,6 +13,7 @@ const SCC_INSTANCE_IP = process.env.SCC_INSTANCE_IP || null;
 const SCC_INSTANCE_IP_FAMILY = process.env.SCC_INSTANCE_IP_FAMILY || 'IPv4';
 const SCC_AUTH_KEY = process.env.cak || process.env.CLUSTER_AUTH_KEY || process.env.SCC_AUTH_KEY || null;
 const RETRY_DELAY = Number(argv.r) || Number(process.env.SCC_BROKER_SERVER_RETRY_DELAY) || 2000;
+const SC_LOG = process.env.SC_LOG || false;
 const STATE_SERVER_CONNECT_TIMEOUT = Number(process.env.SCC_STATE_SERVER_CONNECT_TIMEOUT) || 3000;
 const STATE_SERVER_ACK_TIMEOUT = Number(process.env.SCC_STATE_SERVER_ACK_TIMEOUT) || 2000;
 const BROKER_SERVER_CONNECT_TIMEOUT = Number(process.env.SCC_BROKER_SERVER_CONNECT_TIMEOUT) || 10000;
@@ -82,7 +83,7 @@ const options = {
   crashWorkerOnError: argv['auto-reboot'] !== false,
   connectTimeout: BROKER_SERVER_CONNECT_TIMEOUT,
   ackTimeout: BROKER_SERVER_ACK_TIMEOUT,
-  messageLogLevel: LOG_LEVEL,
+  messageLogLevel: SC_LOG ? LOG_LEVEL : 0,
   clusterAuthKey: SCC_AUTH_KEY
 };
 
