@@ -5,7 +5,12 @@
   "description": "Zation broker server for horizontal scalability.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "start:docker": "pm2 start index.js && pm2 logs index",
+    "dockerBuild": "docker build -t zation-cluster/broker . ",
+    "dockerExport" : "docker save --output zation-cluster-broker.tar zation-cluster/broker",
+    "dockerRun": "docker run --name zation-cluster-broker -p8888:8888 zation-cluster/broker",
+    "dockerStop": "docker stop zation-cluster-broker && docker rm -f zation-cluster-broker"
   },
   "repository": {
     "type": "git",
