@@ -35,7 +35,7 @@ if (typeof argv.l !== 'undefined') {
 } else if (typeof process.env.SCC_BROKER_SERVER_LOG_LEVEL !== 'undefined') {
   LOG_LEVEL = Number(process.env.SCC_BROKER_SERVER_LOG_LEVEL);
 } else {
-  LOG_LEVEL = 1;
+  LOG_LEVEL = 3;
 }
 
 function logError(err) {
