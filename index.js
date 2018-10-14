@@ -35,12 +35,18 @@ if (typeof argv.l !== 'undefined') {
 } else if (typeof process.env.SCC_BROKER_SERVER_LOG_LEVEL !== 'undefined') {
   LOG_LEVEL = Number(process.env.SCC_BROKER_SERVER_LOG_LEVEL);
 } else {
-  LOG_LEVEL = 3;
+  LOG_LEVEL = 2;
 }
 
 function logError(err) {
     if (LOG_LEVEL > 0) {
         console.error('\x1b[31m%s\x1b[0m', '   [Error]',err);
+    }
+}
+
+function logWarning(war) {
+    if (LOG_LEVEL > 0) {
+        console.error('\x1b[31m%s\x1b[0m','   [WARNING]',war);
     }
 }
 
@@ -57,7 +63,7 @@ function logActive(txt) {
 }
 
 function logInfo(info) {
-    if (LOG_LEVEL >= 3) {
+    if (LOG_LEVEL >= 1) {
         console.log('\x1b[34m%s\x1b[0m','   [INFO]',info);
     }
 }
@@ -124,8 +130,24 @@ const connectToClusterStateServer = function () {
   const stateSocket = scClient.connect(scStateSocketOptions);
 
   stateSocket.on('error', (err) => {
-    if (LOG_LEVEL > 0) {
-      console.error(err);
+    if (LOG_LEVEL > 2) {
+      logError(err);
+    }
+  });
+
+  stateSocket.on('disconnect',()=> {
+    logWarning('Broker lost the connection to the zation-cluster-state server. Broke will try to reconnect.');
+  });
+
+  stateSocket.on('connectAbort',() =>
+  {
+    if(LOG_LEVEL > 0){
+      if(firstCon) {
+          logWarning('Connection to zation-cluster-state server is failed. Broker will try to reconnect.');
+      }
+      else{
+          logWarning('Reconnection to zation-cluster-state server is failed. Broker will try to reconnect.');
+      }
     }
   });
 
@@ -146,10 +168,12 @@ const connectToClusterStateServer = function () {
 
   stateSocket.on('connect', () =>
   {
-    if(firstCon)
-    {
+    if(firstCon) {
       firstCon = false;
       logInfo(`Connected to zation-cluster-state server on host:'${SCC_STATE_SERVER_HOST}' and port:'${SCC_STATE_SERVER_PORT}'`);
+    }
+    else {
+        logInfo(`Broker is reconnected to zation-cluster-state server on host:'${SCC_STATE_SERVER_HOST}' and port:'${SCC_STATE_SERVER_PORT}'`);
     }
     emitJoinCluster();
   });
