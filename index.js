@@ -32,8 +32,8 @@ let firstCon = true;
 let LOG_LEVEL;
 if (typeof argv.l !== 'undefined') {
   LOG_LEVEL = Number(argv.l);
-} else if (typeof process.env.SCC_BROKER_SERVER_LOG_LEVEL !== 'undefined') {
-  LOG_LEVEL = Number(process.env.SCC_BROKER_SERVER_LOG_LEVEL);
+} else if (typeof process.env.LOG_LEVEL !== 'undefined') {
+  LOG_LEVEL = Number(process.env.LOG_LEVEL);
 } else {
   LOG_LEVEL = 2;
 }
