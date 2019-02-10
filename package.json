@@ -1,6 +1,6 @@
 {
   "name": "zation-cluster-broker",
-  "version": "6.0.2",
+  "version": "6.0.3",
   "license": "MIT",
   "description": "Zation broker server for horizontal scalability.",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "start": "node index.js",
     "start:docker": "pm2 start index.js && pm2 logs index",
     "dockerBuild": "docker build -t zation-cluster/broker . ",
-    "dockerExport" : "docker save --output zation-cluster-broker.tar zation-cluster/broker",
+    "dockerExport": "docker save --output zation-cluster-broker.tar zation-cluster/broker",
     "dockerRun": "docker run --name zation-cluster-broker -p8888:8888 zation-cluster/broker",
     "dockerStop": "docker stop zation-cluster-broker && docker rm -f zation-cluster-broker"
   },
@@ -34,6 +34,7 @@
     "scalability"
   ],
   "dependencies": {
+    "lodash": ">=4.17.11",
     "express": "4.16.3",
     "minimist": "1.2.0",
     "sc-framework-health-check": "^2.0.0",
