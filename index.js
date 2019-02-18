@@ -44,6 +44,11 @@ function logError(err) {
     }
 }
 
+function logStartFail(err) {
+    console.error('\x1b[31m%s\x1b[0m', '   [Error]',err);
+    process.exit()
+}
+
 function logWarning(war) {
     if (LOG_LEVEL > 0) {
         console.error('\x1b[31m%s\x1b[0m','   [WARNING]',war);
@@ -103,6 +108,15 @@ for (let i in SOCKETCLUSTER_OPTIONS) {
   if (SOCKETCLUSTER_OPTIONS.hasOwnProperty(i)) {
     options[i] = SOCKETCLUSTER_OPTIONS[i];
   }
+}
+
+try {
+    require("sc-uws");
+}
+catch (e) {
+    if(options.wsEngine === 'sc-uws') {
+        logStartFail(`Failed to load sc-uws! Error -> ${e.toString()}.`);
+    }
 }
 
 const socketCluster = new SocketCluster(options);
