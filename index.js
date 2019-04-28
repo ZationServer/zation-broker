@@ -1,4 +1,4 @@
-//SC V 6.0.1
+//SC V 6.0.2
 
 const SocketCluster = require('socketcluster');
 const scClient = require('socketcluster-client');
