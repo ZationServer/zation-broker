@@ -121,6 +121,8 @@ catch (e) {
 
 const socketCluster = new SocketCluster(options);
 
+process.title = `Zation Cluster Broker: ${socketCluster.options.instanceId}`;
+
 const connectToClusterStateServer = function () {
   const scStateSocketOptions = {
     hostname: SCC_STATE_SERVER_HOST,
