@@ -93,7 +93,7 @@ const options = {
   crashWorkerOnError: argv['auto-reboot'] !== false,
   connectTimeout: BROKER_SERVER_CONNECT_TIMEOUT,
   ackTimeout: BROKER_SERVER_ACK_TIMEOUT,
-  logLevel: LOG_LEVEL ? LOG_LEVEL : 0,
+  logLevel: LOG_LEVEL === 3 ? LOG_LEVEL : 0,
   clusterAuthKey: SCC_AUTH_KEY
 };
 
