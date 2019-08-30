@@ -38,6 +38,7 @@
     "minimist": "1.2.0",
     "sc-framework-health-check": "^2.0.0",
     "socketcluster": "14.3.5",
-    "socketcluster-client": "14.3.0"
+    "socketcluster-client": "14.3.0",
+    "z-uws": "^0.15.2"
   }
 }

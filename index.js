@@ -85,7 +85,7 @@ const options = {
   workers: Number(argv.w) || Number(process.env.SOCKETCLUSTER_WORKERS) || 1,
   brokers: Number(argv.b) || Number(process.env.SOCKETCLUSTER_BROKERS) || 1,
   port: Number(argv.p) || Number(process.env.SCC_BROKER_SERVER_PORT) || DEFAULT_PORT,
-  wsEngine: process.env.SOCKETCLUSTER_WS_ENGINE || 'sc-uws',
+  wsEngine: process.env.SOCKETCLUSTER_WS_ENGINE || 'z-uws',
   appName: argv.n || process.env.SOCKETCLUSTER_APP_NAME || null,
   workerController: argv.wc || process.env.SOCKETCLUSTER_WORKER_CONTROLLER || __dirname + '/worker.js',
   brokerController: argv.bc || process.env.SOCKETCLUSTER_BROKER_CONTROLLER || __dirname + '/broker.js',
