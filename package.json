@@ -1,7 +1,7 @@
 {
   "name": "zation-cluster-broker",
   "version": "6.0.5",
-  "license": "MIT",
+  "license": "SEE LICENSE IN <README.md>",
   "description": "Zation broker server for horizontal scalability.",
   "main": "index.js",
   "scripts": {
