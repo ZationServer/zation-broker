@@ -1,16 +1,13 @@
 {
   "name": "zation-broker",
-  "version": "6.0.7",
+  "version": "7.0.0",
   "license": "SEE LICENSE IN <README.md>",
   "description": "Zation broker server for horizontal scalability.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start:docker": "pm2 start index.js && pm2 logs index",
-    "dockerBuild": "docker build -t zation-cluster/broker . ",
-    "dockerExport": "docker save --output zation-cluster-broker.tar zation-cluster/broker",
-    "dockerRun": "docker run --name zation-cluster-broker -p8888:8888 zation-cluster/broker",
-    "dockerStop": "docker stop zation-cluster-broker && docker rm -f zation-cluster-broker"
+    "build": "gulp build",
+    "prepublishOnly": "npm run build",
+    "start": "JOIN=$npm_config_join node dist/run.js"
   },
   "repository": {
     "type": "git",
@@ -34,11 +31,15 @@
     "scalability"
   ],
   "dependencies": {
-    "express": "4.16.3",
-    "minimist": "1.2.0",
-    "sc-framework-health-check": "^2.0.0",
-    "socketcluster": "14.3.5",
-    "socketcluster-client": "14.3.0",
-    "z-uws": "^0.15.2"
+    "ziron-broker": "^0.1.13",
+    "docker-secret": "^1.2.3"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.5",
+    "gulp": "4.0.2",
+    "gulp-optimize-js": "1.1.0",
+    "gulp-terser": "1.2.0",
+    "gulp-typescript": "^5.0.1",
+    "del": "^5.1.0"
   }
 }
