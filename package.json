@@ -31,7 +31,7 @@
     "scalability"
   ],
   "dependencies": {
-    "ziron-broker": "^0.1.13",
+    "ziron-broker": "^0.1.20",
     "docker-secret": "^1.2.3"
   },
   "devDependencies": {
