@@ -1,5 +1,5 @@
 {
-  "name": "zation-cluster-broker",
+  "name": "zation-broker",
   "version": "6.0.7",
   "license": "SEE LICENSE IN <README.md>",
   "description": "Zation broker server for horizontal scalability.",
