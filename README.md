@@ -1,4 +1,4 @@
-# zation-cluster-broker
+# zation-broker
 
 The broker component of the zation framework.
 
