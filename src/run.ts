@@ -13,10 +13,14 @@ process.title = `Zation Broker`;
 
 new BrokerServer({
   join:
-    variables.JOIN != null
-      ? variables.JOIN
-      : `${variables.SECRET || ""}@${variables.STATE || ""}`,
+      variables.JOIN != null
+          ? variables.JOIN
+          : `${variables.SECRET || ""}@${variables.STATE || ""}`,
   port: parseInt(variables.PORT) || 8888,
   path: variables.SERVER_PATH || "/",
-  logLevel: parseInt(variables.LOG_LEVEL) || LogLevel.Everything,
-}).joinAndListen().catch(() => process.exit(1));
+  logLevel: isNaN(parseInt(variables.LOG_LEVEL))
+      ? LogLevel.Everything
+      : parseInt(variables.LOG_LEVEL),
+})
+    .joinAndListen()
+    .catch(() => process.exit(1));
