@@ -1,11 +1,11 @@
 # zation-broker
 
-The broker component of the zation framework.
+The broker component of the Zation framework.
 
 <h1 align="center">
   <!-- Logo -->
   <br/>
-  <a href="https://zation.de">
+  <a href="https://zation.io">
       <img src="https://zation.io/img/zationWideLogo.svg" alt="Logo Zation" height="200"/>
   </a>
   <br/>
