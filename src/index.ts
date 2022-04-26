@@ -4,4 +4,7 @@ GitHub: LucaCode
 Copyright(c) Ing. Luca Gian Scaringella
  */
 
-export * from 'ziron-broker';
+import BrokerServer from "./BrokerServer";
+import {LogLevel, BrokerServerOptions} from "ziron-broker";
+
+export { BrokerServer, BrokerServerOptions, LogLevel };

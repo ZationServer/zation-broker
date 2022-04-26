@@ -4,8 +4,9 @@ GitHub: LucaCode
 Copyright(c) Ing. Luca Gian Scaringella
  */
 
-import {BrokerServer,LogLevel} from "ziron-broker";
+import {LogLevel} from "ziron-broker";
 import {secrets} from "docker-secret";
+import BrokerServer from "./BrokerServer";
 
 const variables = Object.assign({}, process.env, secrets);
 
@@ -22,5 +23,5 @@ new BrokerServer({
       ? LogLevel.Everything
       : parseInt(variables.LOG_LEVEL),
 })
-    .joinAndListen()
+    .listenAndJoin()
     .catch(() => process.exit(1));

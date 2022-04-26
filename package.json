@@ -35,8 +35,11 @@
     "scalability"
   ],
   "dependencies": {
-    "docker-secret": "^1.2.4"
     "ziron-broker": "6.5.0",
+    "docker-secret": "^1.2.4",
+    "machine-state": "0.4.0",
+    "@types/ip": "^1.1.0",
+    "ip": "^1.1.5"
   },
   "devDependencies": {
     "typescript": "^3.7.5",
