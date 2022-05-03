@@ -19,9 +19,14 @@ export default class BrokerServer extends ZironBrokerServer {
         this._startResetCounterInterval();
     }
 
+    public async listen() {
+        await super.listen();
+        if(this.launchedTimestamp == null)
+            this.launchedTimestamp = Date.now();
+    }
+
     public async listenAndJoin() {
         await this.listen();
-        if(this.launchedTimestamp == null) this.launchedTimestamp = Date.now();
         await this.join();
     }
 
