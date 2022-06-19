@@ -53,7 +53,7 @@ export default class BrokerServer extends ZironBrokerServer {
         },1000);
     }
 
-    private readonly getStaticServerStateInfoCached = cacheResult(this.getStaticServerStateInfo.bind(this));
+    private readonly getStaticServerStateInfoCached = memoResult(this.getStaticServerStateInfo.bind(this));
     public async getStaticServerStateInfo() {
         const server = this.server;
         return {
