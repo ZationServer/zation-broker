@@ -8,6 +8,7 @@ import {BrokerServer as ZironBrokerServer,BrokerServerOptions} from 'ziron-broke
 import MachineState from "machine-state";
 import {version as SERVER_VERSION} from './../package.json';
 import * as IP from 'ip';
+import {memoResult} from "./utils";
 
 export default class BrokerServer extends ZironBrokerServer {
 
