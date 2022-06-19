@@ -12,11 +12,9 @@ import * as IP from 'ip';
 export default class BrokerServer extends ZironBrokerServer {
 
     private launchedTimestamp?: number;
-    private readonly _staticServerStateInformation: Promise<object>;
 
     constructor(options: BrokerServerOptions = {}) {
         super(options);
-        this._staticServerStateInformation = this.getStaticServerStateInfo();
         this._initStandaloneStateProcedure();
         this._startResetCounterInterval();
     }
@@ -40,7 +38,7 @@ export default class BrokerServer extends ZironBrokerServer {
                     id: this.id
                 });
                 else {
-                    const [staticInfo,dynamicInfo] = await Promise.all([this._staticServerStateInformation,
+                    const [staticInfo,dynamicInfo] = await Promise.all([this.getStaticServerStateInfoCached(),
                         this.getDynamicServerStateInfoCached()]);
                     end({...staticInfo,...dynamicInfo,id: this.id});
                 }
@@ -55,6 +53,7 @@ export default class BrokerServer extends ZironBrokerServer {
         },1000);
     }
 
+    private readonly getStaticServerStateInfoCached = cacheResult(this.getStaticServerStateInfo.bind(this));
     public async getStaticServerStateInfo() {
         const server = this.server;
         return {
