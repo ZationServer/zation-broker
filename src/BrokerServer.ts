@@ -72,9 +72,8 @@ export default class BrokerServer extends ZironBrokerServer {
     private _dynamicServerInfoPromise: Promise<any> | null = null;
     private async getDynamicServerStateInfoCached() {
         if(this._dynamicServerInfoPromise != null) return this._dynamicServerInfoPromise;
-        const result = await (this._dynamicServerInfoPromise = this.getDynamicServerStateInfo());
-        this._dynamicServerInfoPromise = null;
-        return result;
+        try {return await (this._dynamicServerInfoPromise = this.getDynamicServerStateInfo());}
+        finally {this._dynamicServerInfoPromise = null;}
     }
 
     private async getDynamicServerStateInfo() {
