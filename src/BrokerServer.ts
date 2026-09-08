@@ -7,7 +7,7 @@ Copyright(c) Ing. Luca Gian Scaringella
 import {BrokerServer as ZironBrokerServer,BrokerServerOptions} from 'ziron-broker';
 import MachineState from "machine-state";
 import {version as SERVER_VERSION} from './../package.json';
-import * as IP from 'ip';
+import {localIpAddress} from './utils';
 import {memoResult} from "./utils";
 
 export default class BrokerServer extends ZironBrokerServer {
@@ -79,7 +79,7 @@ export default class BrokerServer extends ZironBrokerServer {
     private async getDynamicServerStateInfo() {
         const server = this.server;
         return {
-            ip: IP.address(),
+            ip: localIpAddress(),
             connectedToState: this.isConnectedToState(),
             clientCount: server.clientCount,
             resourceUsage: (await MachineState.getResourceUsageInfo()),
